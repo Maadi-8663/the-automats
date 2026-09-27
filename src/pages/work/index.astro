@@ -1,0 +1,29 @@
+---
+import Site from '../../layouts/Site.astro';
+import ported from '../../html/work.html?raw';
+
+import '../../styles/page-base.css';
+import '../../styles/page-work.css';
+import '../../styles/mobile.css';
+import '../../styles/theme.css';
+import { brand } from '../../data/brand.js';
+
+const body = ported;
+
+const title = `Work — sixteen systems by ${brand.name}`;
+const description = "Nine delivered for clients, seven built with the workflow JSON in the repo. Every figure is counted or attributed; nothing is estimated.";
+const origin = new URL('/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description,
+  url: new URL('/work/', Astro.site).href,
+  author: { '@id': `${origin}#org` },
+};
+---
+
+<Site title={title} description={description} jsonLd={jsonLd}>
+  <Fragment set:html={body} />
+</Site>

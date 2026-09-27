@@ -1,0 +1,31 @@
+---
+import Site from '../layouts/Site.astro';
+import ported from '../html/home.html?raw';
+import { withPictures } from '../pictures/expertise.js';
+import '../styles/page-home.css';
+import '../styles/cards.css';
+import '../styles/mobile.css';
+import '../styles/theme.css';
+import { brand } from '../data/brand.js';
+
+const body = withPictures(ported, { mark: brand.name, lines: brand.lines });
+
+const title = `${brand.name} — ${brand.role}`;
+const description = "The Automats: AI automation and web development: 62 automations in production and two multi-tenant platforms built end to end.";
+const origin = new URL('/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${origin}#website`,
+  name: brand.name,
+  url: origin,
+  description,
+  inLanguage: 'en',
+  publisher: { '@id': `${origin}#org` },
+};
+---
+
+<Site title={title} description={description} jsonLd={jsonLd}>
+  <Fragment set:html={body} />
+</Site>

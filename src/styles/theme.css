@@ -1,0 +1,81 @@
+html:root{
+  color-scheme:light;
+
+  
+  --paper:#DAD9D5;    
+  --paper2:#F0EFEB;   
+  --hair:#B6B5AF;     
+
+  
+  --ink:#1B1B19;      
+  --ink2:#3A3A37;     
+  --ink3:#55554F;     
+
+  
+  --accent:#9C3712;   
+  --accent-2:#7C2A0C; 
+  --wash:#EADFD7;     
+  --on-accent:#FBFAF7;
+
+  
+  --maroon:var(--accent);
+  --maroon-ink:var(--accent-2);
+
+  
+  --screen:#1F1F1C;
+  --screen2:#36352F;
+  --bone:#F2F1EC;
+  --bone-dim:#A9A8A0;
+  --rose:#E07A4F;     
+
+  
+  --viz1:var(--ink);
+  --viz2:#6F6E68;
+  --viz3:#A2A19A;
+
+  
+  --pic-1:#8F9C86;    
+  --pic-2:#C07C5E;    
+  --pic-3:#47536E;    
+  --pic-4:#CAA467;    
+  --pic-5:#46453F;    
+  --pic-6:#677C7A;    
+}
+
+html:root{background:var(--paper) url(/texture.webp) 0 0/750px 555px repeat}
+html body{background:transparent}
+
+html .ghead{background:rgba(218,217,213,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion:no-preference){
+  @keyframes ghead-in{from{background:rgba(218,217,213,0);-webkit-backdrop-filter:blur(0);backdrop-filter:blur(0)}
+    to{background:rgba(218,217,213,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}}
+  @keyframes ghead-stuck{from,to{background:rgba(218,217,213,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}}
+  html .group{view-timeline:--grp block}
+  html .ghead{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;
+    animation:ghead-in linear,ghead-stuck linear;animation-timeline:--grp,--grp;
+    animation-range:exit-crossing 20px exit-crossing 44px,exit-crossing 44px exit-crossing 100%}
+}}
+
+html .tnode .face,html .minibox,html .cats .ring,html .gh .ring,html .strip,html .canvas,html .snode{background:var(--paper2)}
+html .gates .ring,html .ghead .ring,html .guards .ring{background:var(--wash)}
+html .wf .plate,html .arch .ring{fill:var(--paper2)}
+html .snode::before{background:var(--wash)}
+
+@media (prefers-reduced-motion:reduce){html .cats .ring{background:var(--wash)}}
+@supports not (animation-timeline: view()){html .cats .ring{background:var(--wash)}}
+html .skill:hover{box-shadow:0 18px 34px -22px rgba(48,44,36,.42)}
+
+html ::selection{background:var(--accent);color:var(--on-accent)}
+html .chips input:checked+label,html .send,html .send:hover,html .send .sy{color:var(--on-accent)}
+
+html .tnode .face.back{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+html .tnode .face.back .br{fill:var(--on-accent)}
+
+html .mini path{stroke:var(--accent)}
+html .mini rect{fill:var(--wash);stroke:var(--accent)}
+html :is(.inv span,.invkey i)[style*="#F4F4F4" i]{background:var(--viz1)!important}
+html :is(.inv span,.invkey i)[style*="#CBD5E1" i]{background:var(--viz2)!important}
+html :is(.inv span,.invkey i)[style*="#94A3B8" i]{background:var(--viz3)!important}
+html :is(.inv span,.invkey i)[style*="#22D3EE" i]{background:var(--accent)!important}
+html :is(.inv span,.invkey i)[style*="#26304A" i]{background:var(--hair)!important}

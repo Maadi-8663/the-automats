@@ -1,0 +1,61 @@
+.reg-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end;margin-top:44px}
+.filters{display:flex;gap:20px;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink2)}
+.filters input{position:absolute;opacity:0;width:1px;height:1px}
+.filters label{cursor:pointer;min-height:44px;display:inline-flex;align-items:center;padding:0 2px}
+.filters label:hover{color:var(--ink)}
+.reg:has(#f-delivered:checked) .filters label[for=f-delivered],.reg:has(#f-built:checked) .filters label[for=f-built],.reg:has(#f-all:checked) .filters label[for=f-all]{color:var(--maroon);text-decoration:underline;text-underline-offset:5px}
+.reg:has(#f-delivered:checked) .row[data-prov=Built]{display:none}
+.reg:has(#f-built:checked) .row[data-prov=Delivered]{display:none}
+.reg:has(#f-delivered:checked) .group[data-only=Built],.reg:has(#f-built:checked) .group[data-only=Delivered]{display:none}
+.group{position:relative;padding-top:20px}
+.ghead{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--hair)}
+.ghead .ring{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--maroon);background:var(--wash);display:grid;place-items:center;color:var(--maroon);flex:none}
+.ghead h2{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.2;letter-spacing:-.02em}
+.ghead .n{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink3)}
+.row{display:grid;grid-template-columns:24px minmax(0,1.6fr) minmax(0,.9fr) minmax(0,.8fr);gap:8px 24px;padding:20px 0;border-bottom:1px solid var(--hair);color:inherit}
+.row:hover .name{color:var(--maroon)}
+.row .name{font-weight:500;font-size:16px;line-height:1.3;color:var(--ink)}
+.row .sector{font-size:11px;color:var(--ink3);margin-top:4px}
+.row .line{font-size:13px;line-height:1.45;color:var(--ink2);margin-top:8px}
+.row .fig{font-family:var(--mono);font-size:12px;line-height:1.4}
+.row .src{font-family:var(--mono);font-size:10px;line-height:1.4;color:var(--ink3);margin-top:6px}
+.row .stack{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--ink2)}
+.row .texts{font-family:var(--mono);font-size:10px;line-height:1.4;color:var(--ink3);margin-top:8px}
+.row .prov{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-top:10px}
+.row .prov.d{color:var(--maroon)}.row .prov.b{color:var(--ink3)}
+@media (max-width:899px){.row{grid-template-columns:20px 1fr}.row .col3,.row .col4{grid-column:2}.reg-head{grid-template-columns:1fr}}
+
+.row{scroll-margin-top:104px}
+
+.body-run .spine{z-index:0}
+.snode{width:34px;height:34px;border-radius:10px;left:calc(var(--spine-x) - 17px);
+  background:var(--paper);border:1.5px solid var(--maroon);z-index:2}
+.snode::before{content:"";position:absolute;left:50%;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;
+  border-radius:3px;border:1.5px solid var(--maroon);background:var(--wash)}
+.snode::after{content:"";position:absolute;left:calc(100% + 2px);top:50%;width:16px;height:2px;margin-top:-1px;background:var(--hair)}
+.snode.ghost{border-color:var(--hair)}
+.snode.ghost::before{border-color:var(--hair);background:var(--paper)}
+.snode.filled{background:var(--paper)}
+section.run .snode{top:47px}
+
+.group .snode{top:30px!important;left:calc(var(--spine-x) - 17px - var(--content-x))}
+@media (max-width:899px){
+  .snode{width:26px;height:26px;border-radius:8px;left:calc(var(--spine-x) - 13px)}
+  .snode::before{width:9px;height:9px;margin:-4.5px 0 0 -4.5px}
+  .snode::after{display:none}
+  section.run .snode{top:51px}
+  .group .snode{top:34px!important;left:calc(var(--spine-x) - 13px - var(--content-x))}
+}
+
+:root{color-scheme:dark;--bone:#F4F4F4}
+::selection{background:var(--maroon);color:var(--paper)}
+.face.back{color:var(--paper)}
+.face.back .br{fill:var(--paper)}
+.tnode .face,.minibox,.cats .ring,.gates .ring,.ghead .ring,.guards .ring,.gh .ring,.strip,.canvas{background:#162032}
+.gates .ring,.ghead .ring,.guards .ring{background:var(--wash)}
+.wf .plate{fill:#162032}
+.row:hover .name{color:var(--maroon)}
+.filters label:hover{color:var(--ink)}
+.snode{background:#162032}
+.snode::before{background:var(--wash)}
+.dash .tr i{opacity:.35}

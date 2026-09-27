@@ -1,0 +1,23 @@
+html .skill{--pad:clamp(18px,2.2vw,28px);padding:0 0 var(--pad);overflow:hidden}
+html .skill>:not(.pic){margin-inline:var(--pad)}
+
+html .skill .pic{position:relative;aspect-ratio:4/3;margin-bottom:calc(var(--pad) - 13px);
+  background-color:var(--pic);background-image:url(/texture.webp);background-size:375px 278px;
+  background-blend-mode:multiply;border-bottom:1px solid var(--hair)}
+html .skill .pic svg{position:absolute;inset:0;display:block;width:100%;height:100%}
+html .pic--1{--pic:var(--pic-1)}
+html .pic--2{--pic:var(--pic-2)}
+html .pic--3{--pic:var(--pic-3)}
+html .pic--4{--pic:var(--pic-4)}
+html .pic--5{--pic:var(--pic-5)}
+html .pic--6{--pic:var(--pic-6)}
+
+html .pic text{font-family:var(--sans)}
+html .pic .m{font-family:var(--mono)}
+html .pic .s{font-family:var(--serif);font-style:italic}
+html .pic .n{font-family:var(--serif)}
+
+html .skill .pic .lift{transition:transform 480ms var(--enter)}
+html .skill:hover .pic .lift{transform:translateY(-5px)}
+
+@media (max-width:719px){html .skill{--pad:14px}}

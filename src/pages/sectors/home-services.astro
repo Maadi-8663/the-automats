@@ -1,0 +1,29 @@
+---
+import Site from '../../layouts/Site.astro';
+import ported from '../../html/sector.html?raw';
+import { withSectorFlow, withTouchCopy } from '../../mobile/diagrams.js';
+import '../../styles/page-base.css';
+import '../../styles/page-sector.css';
+import '../../styles/mobile.css';
+import '../../styles/theme.css';
+import { brand } from '../../data/brand.js';
+
+const body = withTouchCopy(withSectorFlow(ported));
+
+const title = `Home services & construction — ${brand.name}`;
+const description = "Three systems delivered for contractors and field-service businesses — a lead-to-cash CRM for three companies, a Google Local Services Ads responder and a construction outreach line — plus four built for the sector. 44 automations counted.";
+const origin = new URL('/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description,
+  url: new URL('/sectors/home-services/', Astro.site).href,
+  author: { '@id': `${origin}#org` },
+};
+---
+
+<Site title={title} description={description} jsonLd={jsonLd}>
+  <Fragment set:html={body} />
+</Site>

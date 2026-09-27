@@ -1,0 +1,31 @@
+---
+import Site from '../../layouts/Site.astro';
+import ported from '../../html/system.html?raw';
+import { withSystemArch } from '../../mobile/diagrams.js';
+import '../../styles/page-base.css';
+import '../../styles/page-system.css';
+import '../../styles/mobile.css';
+import '../../styles/theme.css';
+import { brand } from '../../data/brand.js';
+
+const body = withSystemArch(ported);
+
+const title = `Lead-to-Cash CRM for Three Contractors — ${brand.name}`;
+const description = "Delivered. 42 automations live, 73 workflows, 552 nodes — counted directly from the exported workflow JSON.";
+const origin = new URL('/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: title,
+  description,
+  url: new URL('/work/lead-to-cash-crm/', Astro.site).href,
+  author: { '@id': `${origin}#org` },
+  about: 'Workflow automation for home-services contractors',
+  keywords: 'n8n, CRM, lead management, Google Sheets, Twilio, CallRail, offline conversions',
+};
+---
+
+<Site title={title} description={description} jsonLd={jsonLd}>
+  <Fragment set:html={body} />
+</Site>
