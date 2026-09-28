@@ -3,6 +3,7 @@ import Site from '../layouts/Site.astro';
 import ported from '../html/home.html?raw';
 import { withPictures } from '../pictures/expertise.js';
 import { withSectorCards } from '../pictures/sectors.js';
+import { withBrandColours } from '../pictures/brands.js';
 import { withWords } from '../motion/words.js';
 import '../styles/page-home.css';
 import '../styles/cards.css';
@@ -11,7 +12,7 @@ import '../styles/motion.css';
 import '../styles/theme.css';
 import { brand } from '../data/brand.js';
 
-const body = withWords(withSectorCards(withPictures(ported, { mark: brand.name, lines: brand.lines })), [/<h2 class="say rv">/]);
+const body = withWords(withSectorCards(withBrandColours(withPictures(ported, { mark: brand.name, lines: brand.lines }))), [/<h2 class="say rv">/]);
 
 const title = `${brand.name} — ${brand.role}`;
 const description = "The Automats: AI automation and web development: 62 automations in production and two multi-tenant platforms built end to end.";
