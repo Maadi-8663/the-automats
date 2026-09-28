@@ -1,14 +1,15 @@
 ---
 import Site from '../../layouts/Site.astro';
 import ported from '../../html/work.html?raw';
-
+import { withWords } from '../../motion/words.js';
 import '../../styles/page-base.css';
 import '../../styles/page-work.css';
 import '../../styles/mobile.css';
+import '../../styles/motion.css';
 import '../../styles/theme.css';
 import { brand } from '../../data/brand.js';
 
-const body = ported;
+const body = withWords(withWords(ported, [/<h1 class="serif"[^>]*>/], 'load'), [/<h2>/]);
 
 const title = `Work — sixteen systems by ${brand.name}`;
 const description = "Nine delivered for clients, seven built with the workflow JSON in the repo. Every figure is counted or attributed; nothing is estimated.";

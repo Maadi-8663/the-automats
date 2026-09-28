@@ -2,13 +2,15 @@
 import Site from '../../layouts/Site.astro';
 import ported from '../../html/system.html?raw';
 import { withSystemArch } from '../../mobile/diagrams.js';
+import { withWords } from '../../motion/words.js';
 import '../../styles/page-base.css';
 import '../../styles/page-system.css';
 import '../../styles/mobile.css';
+import '../../styles/motion.css';
 import '../../styles/theme.css';
 import { brand } from '../../data/brand.js';
 
-const body = withSystemArch(ported);
+const body = withWords(withSystemArch(ported), [/<h1 class="serif"[^>]*>/], 'load');
 
 const title = `Lead-to-Cash CRM for Three Contractors — ${brand.name}`;
 const description = "Delivered. 42 automations live, 73 workflows, 552 nodes — counted directly from the exported workflow JSON.";

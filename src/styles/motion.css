@@ -1,0 +1,187 @@
+html:root{
+  --mo-ease:cubic-bezier(.16,1,.3,1);
+  --mo-lift:44px;        
+  --mo-card-lift:92px;   
+  --mo-tilt:9deg;        
+}
+@media (max-width:719px){html:root{--mo-lift:28px;--mo-card-lift:52px;--mo-tilt:0deg}}
+
+@media (prefers-reduced-motion:no-preference){
+
+  
+  html .wsplit .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .08em .16em;margin:0 -.08em -.16em}
+  html .wsplit .w>span{display:inline-block}
+  @keyframes mo-in-word{from{translate:0 108%}}
+  @keyframes mo-in-rise{from{opacity:0;translate:0 26px}}
+  @keyframes mo-in-fade{from{opacity:0}}
+  @keyframes mo-in-wipe{from{clip-path:inset(0 100% 0 0)}}
+  html .wload .w>span{animation:mo-in-word 1000ms var(--mo-ease) both;animation-delay:calc(160ms + var(--i) * 60ms)}
+
+  
+  html .body-run>.wrap>p.label:first-child,
+  html .stage>p.label:first-child{animation:mo-in-fade 700ms var(--mo-ease) 60ms both}
+  html .reg-head{animation:mo-in-rise 1000ms var(--mo-ease) 420ms both}
+  html .filters{animation:mo-in-rise 1000ms var(--mo-ease) 540ms both}
+  html .sec-head .lede{animation:mo-in-rise 1000ms var(--mo-ease) 380ms both}
+  html .sec-head .facts{animation:mo-in-rise 1000ms var(--mo-ease) 480ms both}
+  html .stage.sec .strip{animation:mo-in-rise 1100ms var(--mo-ease) 560ms both}
+  html .stage.sec .under{animation:mo-in-fade 900ms var(--mo-ease) 820ms both}
+  html .body-run>.wrap>div>div>p.body{animation:mo-in-rise 1000ms var(--mo-ease) 400ms both}
+  html .body-run>.wrap>div>div>p.label-m{animation:mo-in-rise 1000ms var(--mo-ease) 480ms both}
+  html .figs>div{animation:mo-in-rise 1000ms var(--mo-ease) both;animation-delay:calc(560ms + var(--k, 0) * 70ms)}
+  html .figs>div:nth-child(2){--k:1}html .figs>div:nth-child(3){--k:2}html .figs>div:nth-child(4){--k:3}html .figs>div:nth-child(5){--k:4}
+  html .body-run>.wrap>div>div+div{animation:mo-in-rise 1100ms var(--mo-ease) 640ms both}
+  html .body-run>.wrap>div>div+div .mini{clip-path:inset(0);animation:mo-in-wipe 1400ms var(--mo-ease) 900ms both}
+}
+
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion:no-preference){
+
+  @keyframes mo-rise{from{opacity:0;translate:0 var(--mo-lift)}}
+  @keyframes mo-slide{from{opacity:0;translate:-30px 0}}
+  @keyframes mo-slide-r{from{opacity:0;translate:36px 0}}
+  @keyframes mo-fade{from{opacity:0}}
+  @keyframes mo-word{from{translate:0 110%}}
+  @keyframes mo-draw-x{from{scale:0 1}}
+  @keyframes mo-card{from{opacity:0;translate:0 var(--mo-card-lift);scale:.94;rotate:x var(--mo-tilt)}}
+  @keyframes mo-lift{from{opacity:0;translate:0 var(--mo-card-lift);scale:.965}}
+  @keyframes mo-pop{from{opacity:0;scale:.55}}
+  @keyframes mo-curtain{from{clip-path:inset(100% 0 0 0 round var(--r, 18px));translate:0 36px}}
+  @keyframes mo-develop{from{scale:1.24;filter:grayscale(1) saturate(.88) sepia(.3) contrast(1.03)}}
+  @keyframes mo-drift{from{translate:0 -6%}to{translate:0 6%}}
+  @keyframes mo-zoom{from{scale:1.16}}
+  @keyframes mo-wipe{from{clip-path:inset(0 100% 0 0)}}
+  @keyframes mo-dot{0%{scale:0}55%{scale:1.45}100%{scale:1;border-color:var(--accent);background:var(--accent)}}
+  @keyframes mo-hero-copy{to{translate:0 -11vh;opacity:.12}}
+  @keyframes mo-hero-cluster{to{translate:0 -17vh;scale:1.12;opacity:0}}
+  @keyframes mo-carousel{0%{scale:.9;opacity:.5}32%,68%{scale:1;opacity:1}100%{scale:.9;opacity:.5}}
+  @keyframes mo-progress{from{scale:0 1}to{scale:1 1}}
+
+  
+  html body::before{content:"";position:fixed;left:0;right:0;top:0;height:2px;z-index:70;pointer-events:none;
+    background:var(--accent);transform-origin:0 50%;animation:mo-progress linear both;animation-timeline:scroll(root)}
+
+  
+  html .rv{animation:mo-rise var(--mo-ease) both;animation-timeline:view();
+    animation-range:entry calc(var(--d, 0) * 1vh) entry calc(30vh + var(--d, 0) * 1vh)}
+
+  
+  html .lab.rv{animation:none}
+  html .lab>span{display:inline-block;animation:mo-slide var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 24vh}
+  html .lab::after{transform-origin:0 50%;animation:mo-draw-x var(--mo-ease) both;animation-timeline:view();animation-range:entry 2vh entry 30vh}
+  html .slabel{animation:mo-slide var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 24vh}
+
+  
+  html .wsplit:not(.wload){view-timeline:--mo-words block}
+  html .wsplit.rv{animation:none}
+  html .wsplit:not(.wload) .w>span{animation:mo-word var(--mo-ease) both;animation-timeline:--mo-words;
+    animation-range:entry calc(min(var(--i), 12) * .8vh) entry calc(20vh + min(var(--i), 12) * .8vh)}
+
+  
+  html .hero{view-timeline:--mo-hero block}
+  html .hero>div:first-child{animation:mo-hero-copy linear both;animation-timeline:--mo-hero;animation-range:exit 0% exit 100%}
+  html .hero>.cluster{animation:mo-hero-cluster linear both;animation-timeline:--mo-hero;animation-range:exit 0% exit 100%}
+
+  
+  html .skills{perspective:1400px}
+  html .skills .skill.rv{transform-origin:50% 100%;animation:mo-card var(--mo-ease) both;animation-timeline:view();
+    animation-range:entry calc(var(--d, 0) * 1vh) entry calc(24vh + var(--d, 0) * 1vh)}
+  html .skills .skill.rv:nth-child(3n+2){--d:3}
+  html .skills .skill.rv:nth-child(3n+3){--d:6}
+  html .skill{view-timeline:--mo-card block}
+  html .skill .pic{overflow:hidden}
+  html .skill .pic svg{animation:mo-zoom var(--mo-ease) both;animation-timeline:--mo-card;animation-range:entry 0% entry 30vh}
+
+  
+  html .contact>div.rv{animation:none}
+  html .ways>*{animation:mo-slide var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 22vh}
+  html .contact .compose.rv{transform-origin:50% 100%;animation:mo-lift var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 30vh}
+
+  
+  html .xp li.rv{animation:none}
+  html .xp li.rv>div{animation:mo-slide-r var(--mo-ease) both;animation-timeline:--row;animation-range:entry 0% entry 26vh}
+  html .xp li.rv>div+div{animation-range:entry 3vh entry 30vh}
+  html .xp li .dot{animation:mo-dot var(--mo-ease) both;animation-timeline:--row;animation-range:entry 4vh entry 24vh}
+
+  
+  html .sec.last .note.rv{animation-range:entry 0% entry 18vh}
+
+  
+  html .sects .sect.rv{animation:mo-curtain var(--mo-ease) both;animation-timeline:view();
+    animation-range:entry calc(var(--d, 0) * 1vh) entry calc(24vh + var(--d, 0) * 1vh)}
+  html .sects .sect.rv:nth-child(3n+2){--d:3}
+  html .sects .sect.rv:nth-child(3n+3){--d:6}
+  html .sect{view-timeline:--mo-sect block}
+  html .sect .sect-photo{animation:mo-drift linear both;animation-timeline:--mo-sect;animation-range:cover 0% cover 100%}
+  
+  html .sect .sect-photo img{animation:mo-develop ease-out both;animation-timeline:--mo-sect;
+    animation-range:entry calc(var(--d, 0) * 1vh) entry calc(24vh + var(--d, 0) * 1vh)}
+  html .sect .tx,html .sect .go{animation:mo-rise var(--mo-ease) both;animation-timeline:--mo-sect;
+    animation-range:entry calc(4vh + var(--d, 0) * 1vh) entry calc(24vh + var(--d, 0) * 1vh)}
+
+  
+  
+  html .row{animation:mo-rise var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 20vh}
+  html .ghead .ring{animation:mo-pop var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 22vh}
+  
+  html section .legend>*,html .body-run section p.body,html .body-run section p.small,html .prod>div,html .start>div,
+  html .trail>.label{animation:mo-rise var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 28vh}
+  html .trail>.line{transform-origin:0 50%;animation:mo-draw-x var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 30vh}
+
+  
+  html .cats li{animation:mo-rise var(--mo-ease) both;animation-timeline:view();
+    animation-range:entry calc(var(--d, 0) * 1vh) entry calc(22vh + var(--d, 0) * 1vh)}
+
+  
+  html .minibox .mini{clip-path:inset(0);animation:mo-wipe var(--mo-ease) both;animation-timeline:view();animation-range:entry 20% entry 70%}
+
+  
+  html .screen{--r:6px;clip-path:inset(0 round 6px);animation:mo-curtain var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 30vh}
+  html div.dash{--r:6px;clip-path:inset(0 round 6px);view-timeline:--mo-dash block;animation:mo-curtain var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 30vh}
+  html div.dash .tr{animation:mo-fade var(--mo-ease) both;animation-timeline:--mo-dash;
+    animation-range:entry calc(6vh + var(--d, 0) * .8vh) entry calc(18vh + var(--d, 0) * .8vh)}
+
+  
+  html .tools .tnode{animation:mo-pop var(--mo-ease) both;animation-timeline:view();
+    animation-range:entry calc(var(--d, 0) * .7vh) entry calc(20vh + var(--d, 0) * .7vh)}
+
+  
+  html .gates li,html .guards li{animation:mo-rise var(--mo-ease) both;animation-timeline:view();
+    animation-range:entry calc(var(--d, 0) * 1vh) entry calc(24vh + var(--d, 0) * 1vh)}
+
+  
+  html .inv{view-timeline:--mo-inv block}
+  html .inv span{transform-origin:0 50%;animation:mo-draw-x var(--mo-ease) both;animation-timeline:--mo-inv;
+    animation-range:entry calc(var(--d, 0) * 1.4vh) entry calc(16vh + var(--d, 0) * 1.4vh)}
+  html .invkey>span{animation:mo-fade var(--mo-ease) both;animation-timeline:--mo-inv;
+    animation-range:entry calc(6vh + var(--d, 0) * 1vh) entry calc(18vh + var(--d, 0) * 1vh)}
+
+  
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(2){--d:1}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(3){--d:2}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(4){--d:3}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(5){--d:4}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(6){--d:5}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(7){--d:6}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(8){--d:7}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(9){--d:8}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(10){--d:9}
+  html :is(.cats li,.tools .tnode,.inv span,.invkey>span,.dash .tr,.gates li):nth-child(n+11){--d:10}
+  html .guards li:nth-child(2n){--d:4}
+}
+
+@media (max-width:719px) and (prefers-reduced-motion:no-preference){
+  
+  html .skills{animation:mo-rise var(--mo-ease) both;animation-timeline:view();animation-range:entry 0% entry 30vh}
+  html body .skills .skill.rv{animation:mo-carousel linear both;animation-timeline:view(inline);animation-range:cover 0% cover 100%}
+  
+  html .sects .sect.rv:nth-child(3n+2),html .sects .sect.rv:nth-child(3n+3){--d:0}
+  html .sects .sect.rv:nth-child(2n){--d:4}
+  
+  html .xp li.rv>div{animation-name:mo-rise}
+  html .hero>div:first-child{animation-name:mo-hero-copy-sm}
+  html .hero>.cluster,html .skill .pic svg{animation:none}
+  @keyframes mo-hero-copy-sm{to{translate:0 -6vh}}
+  html .guards li:nth-child(2n){--d:0}
+}
+}
